@@ -3,7 +3,7 @@ import java.net.*;
 
 public class RestCall {
 	public static void executePostCommand(String item, String command) throws Exception {
-		String url = "http://" + Config.OPENHAB_URL + ":" + Config.OPENHAB_PORT + "/rest/items/"; //"http://localhost:8080/rest/items/";
+		String url = "http://" + Config.OPENHAB_URL + ":" + Config.OPENHAB_PORT + "/rest/items/";
 		URL obj = new URL(url+item);
 		
 		HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();

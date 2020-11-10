@@ -9,11 +9,30 @@ public class SHDS implements Runnable{
 		preferences = new Preferences();
 	}
 	
-	public void run() {
+	public void setTime(int sec) {
+		if(sec != 0) {
+			try {
+				Thread.sleep((60-sec) * 1000); 
+			}
+			catch(Exception ex) {
+				System.out.println("Unexpected exection...");
+				ex.printStackTrace();
+				System.exit(0);;
+			}
+		}
+	}
+	
+	public void run(){
+		int min = LocalDateTime.now().getMinute();
+		int hour = LocalDateTime.now().getHour(); 
+		int sec =  LocalDateTime.now().getSecond();
+		
+		setTime(sec); // setting the second to 0
+		
 		while (!Thread.interrupted()) {
-			int min = LocalDateTime.now().getMinute();
-			int hour = LocalDateTime.now().getHour(); 
-			int sec =  LocalDateTime.now().getSecond();
+			min = LocalDateTime.now().getMinute();
+			hour = LocalDateTime.now().getHour(); 
+			sec =  LocalDateTime.now().getSecond();
 			// System.out.println(Thread.currentThread().getName() + " hour " + hour + " min " + min + " sec " + sec);
 			int currentTime = hour*100+min;
 			try {
