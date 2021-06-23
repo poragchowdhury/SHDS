@@ -16,6 +16,7 @@ public class Preferences {
 			File folder = new File("items");
 			File[] itemFiles = folder.listFiles();
 			for(File file : itemFiles) {
+				System.out.println("File read: '" + file+"'");
 				Object obj = parser.parse(new FileReader(file));
 				JSONObject jsonObject = (JSONObject)obj;
 				JSONArray items = (JSONArray)jsonObject.get("items");
